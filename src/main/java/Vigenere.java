@@ -1,14 +1,44 @@
 import java.util.Scanner;
 
+//CAPITAL LETTERS ARE FROM 65 TO 90 INCLUSIVE
+
 public class Vigenere {
     public static String encryptVigenere(String message, String key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+        String ret = "";
+        int ncc = 0;
+        for (int i = 0; i < message.length(); i++){
+            
+            if (message.charAt(i) <= 90 && message.charAt(i) >= 65){
+                int a = key.charAt((i - ncc) % key.length()) - 65;
+                int b = message.charAt(i) - 65;
+                char add = (char) (((a + b) % 26) + 65);
+                ret += add;
+            }
+            else{
+                ncc++;
+                ret += message.charAt(i);
+            }
+        }
+        return ret;
     }
 
     public static String decryptVigenere(String message, String key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+        String ret = "";
+        int ncc = 0;
+        for (int i = 0; i < message.length(); i++){
+            
+            if (message.charAt(i) <= 90 && message.charAt(i) >= 65){
+                int a = key.charAt((i - ncc) % key.length()) - 65;
+                int b = message.charAt(i) - 65;
+                char add = (char) (((b - a + 26) % 26) + 65);
+                ret += add;
+            }
+            else{
+                ncc++;
+                ret += message.charAt(i);
+            }
+        }
+        return ret;
     }
 
 
