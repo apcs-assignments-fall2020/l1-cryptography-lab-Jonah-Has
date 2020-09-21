@@ -64,11 +64,11 @@ public class Caesar {
         for (int i = 0; i < message.length(); i++){
             char a = message.charAt(i);
             if ((a >= 65 && a <= 90)){
-                char q = (char) (((a - k - 65) % 26 ) + 65);
+                char q = (char) (((a - k - 13) % 26 ) + 65);
                 ret += q;
             }
             else if (a >= 97 && a <= 122){
-                char q = (char) (((a - k - 97) % 26) + 97);
+                char q = (char) (((a - k - 19) % 26) + 97);
                 ret += q;
             }
             else{
