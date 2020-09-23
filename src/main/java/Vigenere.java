@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 //CAPITAL LETTERS ARE FROM 65 TO 90 INCLUSIVE
+//LOWERCASE LETTERS ARE FROM 97 TO 122 INCLUSIVE
 
 public class Vigenere {
     public static String encryptVigenere(String message, String key) {
@@ -12,6 +13,12 @@ public class Vigenere {
                 int a = key.charAt((i - ncc) % key.length()) - 65;
                 int b = message.charAt(i) - 65;
                 char add = (char) (((a + b) % 26) + 65);
+                ret += add;
+            }
+            else if (message.charAt(i) <= 122 && message.charAt(i) >= 97){
+                int a = key.charAt((i - ncc) % key.length()) - 65;
+                int b = message.charAt(i) - 97;
+                char add = (char) (((a + b) % 26) + 97);
                 ret += add;
             }
             else{
@@ -31,6 +38,12 @@ public class Vigenere {
                 int a = key.charAt((i - ncc) % key.length()) - 65;
                 int b = message.charAt(i) - 65;
                 char add = (char) (((b - a + 26) % 26) + 65);
+                ret += add;
+            }
+            else if (message.charAt(i) <= 122 && message.charAt(i) >= 97){
+                int a = key.charAt((i - ncc) % key.length()) - 65;
+                int b = message.charAt(i) - 97;
+                char add = (char) (((b - a + 26) % 26) + 97);
                 ret += add;
             }
             else{
